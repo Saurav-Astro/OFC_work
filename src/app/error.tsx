@@ -26,7 +26,6 @@ export default function Error({
           loop 
           playsInline
           preload="auto"
-          poster="/ofc-1.jpg"
           className="absolute top-0 left-0 w-full h-full object-cover"
         >
           <source src="/Ofc/1.mp4" type="video/mp4" />
