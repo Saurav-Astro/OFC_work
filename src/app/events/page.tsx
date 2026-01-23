@@ -42,19 +42,24 @@ const EventCard = ({ event }: { event: (typeof upcomingEvents)[0] & { isPast?: b
 export default function EventsPage() {
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Video Hero Section */}
+      {/* Video/Image Hero Section */}
       <div className="relative w-full h-[93vh] overflow-hidden bg-black">
+        {/* Video element - will show if file exists */}
         <video 
           autoPlay 
           muted 
           loop 
           playsInline
-          preload="auto"
+          preload="metadata"
           className="absolute top-0 left-0 w-full h-full object-cover"
         >
           <source src="/Ofc/1.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
         </video>
+        {/* Fallback background image */}
+        <div 
+          className="absolute top-0 left-0 w-full h-full bg-cover bg-center"
+          style={{ backgroundImage: 'url(/ofc-1.jpg)' }}
+        />
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative h-full flex flex-col items-center justify-center text-center px-4">
           <FadeIn>
