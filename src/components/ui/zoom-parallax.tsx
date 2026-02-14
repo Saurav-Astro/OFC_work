@@ -41,16 +41,28 @@ export function ZoomParallax({ images, children }: ZoomParallaxProps) {
 
 	// Mobile: Show simple static image
 	if (isMobile) {
+		const isVideo = images[0]?.src.endsWith('.mp4');
 		return (
 			<div ref={container} className="relative h-[150vh]">
 				<div className="sticky top-0 h-screen overflow-hidden">
 					<div className="absolute top-0 flex h-full w-full items-center justify-center">
 						<div className="relative h-full w-full">
-							<img
-								src={images[0]?.src || '/placeholder.svg'}
-								alt={images[0]?.alt || 'Hero image'}
-								className="h-full w-full object-cover"
-							/>
+							{isVideo ? (
+								<video
+									src={images[0]?.src || '/placeholder.svg'}
+									className="h-full w-full object-cover"
+									autoPlay
+									loop
+									muted
+									playsInline
+								/>
+							) : (
+								<img
+									src={images[0]?.src || '/placeholder.svg'}
+									alt={images[0]?.alt || 'Hero image'}
+									className="h-full w-full object-cover"
+								/>
+							)}
 						</div>
 					</div>
 					<div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center p-4 bg-black/60">
@@ -67,6 +79,7 @@ export function ZoomParallax({ images, children }: ZoomParallaxProps) {
 			<div className="sticky top-0 h-screen overflow-hidden">
 				{images.map(({ src, alt }, index) => {
 					const scale = scales[index % scales.length];
+					const isVideo = src.endsWith('.mp4');
 
 					return (
 						<motion.div
@@ -75,11 +88,22 @@ export function ZoomParallax({ images, children }: ZoomParallaxProps) {
 							className={`absolute top-0 flex h-full w-full items-center justify-center ${index === 1 ? '[&>div]:!-top-[30vh] [&>div]:!left-[5vw] [&>div]:!h-[30vh] [&>div]:!w-[35vw]' : ''} ${index === 2 ? '[&>div]:!-top-[10vh] [&>div]:!-left-[25vw] [&>div]:!h-[45vh] [&>div]:!w-[20vw]' : ''} ${index === 3 ? '[&>div]:!left-[27.5vw] [&>div]:!h-[25vh] [&>div]:!w-[25vw]' : ''} ${index === 4 ? '[&>div]:!top-[27.5vh] [&>div]:!left-[5vw] [&>div]:!h-[25vh] [&>div]:!w-[20vw]' : ''} ${index === 5 ? '[&>div]:!top-[27.5vh] [&>div]:!-left-[22.5vw] [&>div]:!h-[25vh] [&>div]:!w-[30vw]' : ''} ${index === 6 ? '[&>div]:!top-[22.5vh] [&>div]:!left-[25vw] [&>div]:!h-[15vh] [&>div]:!w-[15vw]' : ''} `}
 						>
 							<div className="relative h-[25vh] w-[25vw]">
-								<img
-									src={src || '/placeholder.svg'}
-									alt={alt || `Parallax image ${index + 1}`}
-									className="h-full w-full object-cover"
-								/>
+								{isVideo ? (
+									<video
+										src={src || '/placeholder.svg'}
+										className="h-full w-full object-cover"
+										autoPlay
+										loop
+										muted
+										playsInline
+									/>
+								) : (
+									<img
+										src={src || '/placeholder.svg'}
+										alt={alt || `Parallax image ${index + 1}`}
+										className="h-full w-full object-cover"
+									/>
+								)}
 							</div>
 						</motion.div>
 					);

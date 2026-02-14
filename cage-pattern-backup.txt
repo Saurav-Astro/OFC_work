@@ -1,0 +1,118 @@
+# Cage Pattern Background Effect - Backup Code
+
+## CSS Classes (from globals.css)
+
+### Cage Pattern - Dense
+```css
+.cage-pattern {
+  background-image: 
+    repeating-linear-gradient(0deg, transparent, transparent 19px, hsl(var(--border) / 0.5) 19px, hsl(var(--border) / 0.5) 20px),
+    repeating-linear-gradient(90deg, transparent, transparent 19px, hsl(var(--border) / 0.5) 19px, hsl(var(--border) / 0.5) 20px);
+  background-size: 20px 20px;
+}
+```
+
+### Cage Pattern - Subtle
+```css
+.cage-pattern-subtle {
+  background-image: 
+    repeating-linear-gradient(0deg, transparent, transparent 29px, hsl(var(--border) / 0.3) 29px, hsl(var(--border) / 0.3) 30px),
+    repeating-linear-gradient(90deg, transparent, transparent 29px, hsl(var(--border) / 0.3) 29px, hsl(var(--border) / 0.3) 30px);
+  background-size: 30px 30px;
+}
+```
+
+## React Component (cage-pattern.tsx)
+
+```tsx
+interface CagePatternProps {
+  className?: string;
+  opacity?: number;
+}
+
+export function CagePattern({ className = '', opacity = 0.3 }: CagePatternProps) {
+  return (
+    <svg
+      className={className}
+      width="100%"
+      height="100%"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{ opacity }}
+    >
+      <defs>
+        <pattern id="cage-wire" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
+          <rect x="0" y="0" width="30" height="30" fill="none" stroke="currentColor" strokeWidth="1" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#cage-wire)" />
+    </svg>
+  );
+}
+
+interface CageOverlayProps {
+  intensity?: 'subtle' | 'medium' | 'strong';
+  className?: string;
+}
+
+export function CageOverlay({ intensity = 'medium', className = '' }: CageOverlayProps) {
+  const opacityMap = {
+    subtle: 0.1,
+    medium: 0.2,
+    strong: 0.3,
+  };
+
+  return (
+    <div className={`absolute inset-0 pointer-events-none ${className}`}>
+      <CagePattern opacity={opacityMap[intensity]} />
+    </div>
+  );
+}
+```
+
+## Usage Examples
+
+### In CSS
+```html
+<div className="cage-pattern">Content here</div>
+<div className="cage-pattern-subtle">Content here</div>
+```
+
+### With Component
+```tsx
+import { CageOverlay } from '@/components/cage-pattern';
+
+// In your component
+<section className="relative">
+  <CageOverlay intensity="subtle" />
+  <div className="relative z-10">Your content</div>
+</section>
+```
+
+### In Header
+```tsx
+<header className="cage-pattern-subtle">
+  {/* Header content */}
+</header>
+```
+
+## Where It Was Used
+
+1. **Header** - `cage-pattern-subtle` class
+2. **Footer** - `cage-pattern-subtle` with opacity-20
+3. **Homepage:**
+   - Stats Section - `<CageOverlay intensity="subtle" />`
+   - About OFC Section - `<CageOverlay intensity="subtle" />`
+   - Event Section - `<CageOverlay intensity="medium" />`
+   - Why OFC Section - `<CageOverlay intensity="subtle" />`
+4. **Events Page:**
+   - Hero Section - `cage-pattern-subtle` with opacity-20
+5. **Fighter Registration Form:**
+   - Info Box - `cage-pattern-subtle` with opacity-10
+
+## Notes
+
+- Creates an authentic octagon fighting arena aesthetic
+- Wire mesh grid pattern
+- Different opacity levels for different sections
+- Can be applied as CSS class or React component
+- Positioned absolutely with pointer-events-none to not interfere with interactions

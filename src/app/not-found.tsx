@@ -13,13 +13,8 @@ export default function NotFound() {
           {...getVideoProps()}
           className="absolute top-0 left-0 w-full h-full object-cover"
         >
-          <source src={VIDEO_CONFIG.VIDEO_URL} type="video/mp4" />
+          <source src="/Ofc/1.mp4" type="video/mp4" />
         </video>
-        {/* Fallback background image */}
-        <div 
-          className="absolute top-0 left-0 w-full h-full bg-cover bg-center"
-          style={{ backgroundImage: `url(${VIDEO_CONFIG.FALLBACK_IMAGE})` }}
-        />
         <div className="absolute inset-0 bg-black/70" />
       </div>
 

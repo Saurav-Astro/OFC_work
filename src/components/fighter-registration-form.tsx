@@ -47,16 +47,42 @@ export function FighterRegistrationForm() {
     // In a real app, you'd send this to a server.
     console.log(values);
     toast({
-      title: 'Registration Submitted!',
-      description: 'Thank you for your interest. We will be in touch soon.',
+      title: '⚔️ Application Received!',
+      description: 'Your fighter application has been submitted. Our team will review and contact you within 48 hours.',
+      duration: 5000,
     });
     form.reset();
   }
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="relative">
+      {/* Info Box */}
+      <div className="mb-8 p-6 bg-card border-2 border-primary/30 rounded-lg relative overflow-hidden">
+        <div className="absolute inset-0 cage-pattern-subtle opacity-10" />
+        <h3 className="font-headline text-xl font-bold text-primary uppercase mb-3 relative z-10">What We're Looking For</h3>
+        <ul className="space-y-2 text-muted-foreground relative z-10">
+          <li className="flex items-start gap-2">
+            <span className="text-primary mt-1">•</span>
+            <span>Proven fight record with documented wins</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="text-primary mt-1">•</span>
+            <span>Professional training and discipline</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="text-primary mt-1">•</span>
+            <span>Commitment to the highest standards of sportsmanship</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="text-primary mt-1">•</span>
+            <span>Willingness to compete at the elite level</span>
+          </li>
+        </ul>
+      </div>
+
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 relative">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <FormField
             control={form.control}
             name="name"
@@ -149,12 +175,20 @@ export function FighterRegistrationForm() {
             </FormItem>
           )}
         />
-        <div className="text-center">
-          <Button type="submit" size="lg" className="font-bold glow-on-hover">
-            Submit Application
+        <div className="text-center pt-4">
+          <Button 
+            type="submit" 
+            size="lg" 
+            className="aggressive-glow font-bold text-lg px-12 strike-animation"
+          >
+            Submit Fighter Application
           </Button>
+          <p className="text-xs text-muted-foreground mt-4">
+            By submitting, you agree to our fighter terms and conditions
+          </p>
         </div>
       </form>
     </Form>
+    </div>
   );
 }

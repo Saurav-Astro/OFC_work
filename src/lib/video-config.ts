@@ -9,7 +9,7 @@ export const VIDEO_CONFIG = {
   VIDEO_URL: '/Ofc/1.mp4',
   
   // Fallback image when video doesn't load
-  FALLBACK_IMAGE: '/ofc-1.jpg',
+  FALLBACK_IMAGE: '/Ofc/event-poster.jpg',
   
   // Video properties
   AUTOPLAY: true,

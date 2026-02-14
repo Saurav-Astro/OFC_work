@@ -23,39 +23,18 @@ export const weightClasses = [
 
 export const divisions = ["MMA", "Boxing", "Kickboxing", "Grappling"];
 
-export const upcomingEvents = [
+export const upcomingEvents: { id: number; name: string; date: string; location: string; posterId: string; description?: string }[] = [
     {
       id: 1,
-      name: "OFC 25: Reckoning",
-      date: "October 26, 2024",
-      location: "MGM Grand, Las Vegas",
-      posterId: "event-poster-1"
-    },
-    {
-      id: 2,
-      name: "OFC 26: Vendetta",
-      date: "November 23, 2024",
-      location: "Madison Square Garden, NYC",
-      posterId: "event-poster-2"
-    },
-    {
-      id: 3,
-      name: "OFC 27: Collision Course",
-      date: "December 28, 2024",
-      location: "The O2 Arena, London",
-      posterId: "event-poster-3"
+      name: "Fit India Marathon",
+      date: "TBD 2024",
+      location: "Across India",
+      posterId: "event-marathon",
+      description: "Our goal is simple — to transform an Obese India into a Fit India. Through this marathon, we aim to inspire people to prioritize their health, adopt an active lifestyle, and build discipline in their daily lives. Run for Fitness. Run for a Stronger India."
     }
 ];
 
-export const pastEvents = [
-    {
-      id: 4,
-      name: "OFC 24: Unfinished Business",
-      date: "September 14, 2024",
-      location: "T-Mobile Arena, Las Vegas",
-      posterId: "event-poster-4"
-    },
-];
+export const pastEvents: { id: number; name: string; date: string; location: string; posterId: string; description?: string }[] = [];
 
 export const sponsors = [
     { name: 'Sponsor One', logoId: 'sponsor-1' },

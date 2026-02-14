@@ -7,6 +7,8 @@ import { placeholderImages } from '@/lib/data';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { FadeIn } from '@/components/fade-in';
+import { FighterRegistrationForm } from '@/components/fighter-registration-form';
+import { ScrollReveal, ScrollProgressBar } from '@/components/scroll-animations';
 
 function MessageCircle(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -31,15 +33,18 @@ export default function ContactPage() {
   const mapImage = placeholderImages.find(p => p.id === 'contact-map');
 
   return (
-    <div className="container mx-auto px-4 py-16">
+    <div className="min-h-screen">
+      {/* Scroll Progress Bar */}
+      <ScrollProgressBar />
+      
       <FadeIn>
         <section>
           <header className="text-center mb-12">
-            <h1 className="font-headline text-4xl md:text-6xl font-bold uppercase tracking-wider text-primary">Contact Us</h1>
-            <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-              Reach out for partnerships, media inquiries, or to join our team.
+            <h1 className="font-headline text-4xl md:text-6xl font-black uppercase tracking-wider text-primary combat-shadow-strong">Contact Us</h1>
+            <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground font-semibold">
+              Ready to join the ranks? Have questions? Reach out to the OFC Octa Fighting Championship team.
             </p>
-            <Separator className="w-24 h-1 mx-auto mt-6 bg-primary" />
+            <Separator className="w-32 h-1 mx-auto mt-6 bg-gradient-to-r from-transparent via-primary to-transparent" />
           </header>
 
           <div className="max-w-4xl mx-auto flex flex-col items-center gap-8">
