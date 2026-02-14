@@ -1,15 +1,9 @@
-/**
- * Video Configuration
- * Central point for video asset management
- * Change VIDEO_URL to update video across entire site
- */
-
 export const VIDEO_CONFIG = {
   // Main video URL - Change this to update video everywhere
   VIDEO_URL: '/Ofc/1.mp4',
   
   // Fallback image when video doesn't load
-  FALLBACK_IMAGE: '/ofc-1.jpg',
+  FALLBACK_IMAGE: '/Ofc/1.png',
   
   // Video properties
   AUTOPLAY: true,
