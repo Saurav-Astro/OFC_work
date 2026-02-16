@@ -81,7 +81,7 @@ export const LimelightNav = ({
       {items.map(({ id, icon, label, onClick }, index) => (
           <a
             key={id}
-            ref={el => (navItemRefs.current[index] = el)}
+            ref={el => { navItemRefs.current[index] = el; }}
             className={`relative z-20 flex h-full cursor-pointer items-center justify-center p-4 ${iconContainerClassName}`}
             onClick={() => handleItemClick(index, onClick)}
             aria-label={label}
@@ -89,8 +89,8 @@ export const LimelightNav = ({
             {cloneElement(icon, {
               className: `w-6 h-6 transition-opacity duration-100 ease-in-out ${
                 activeIndex === index ? 'opacity-100' : 'opacity-40'
-              } ${icon.props.className || ''} ${iconClassName || ''}`,
-            })}
+              } ${(icon.props as any).className || ''} ${iconClassName || ''}`,
+            } as any)}
           </a>
       ))}
 
